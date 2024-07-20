@@ -16,8 +16,8 @@ CORS(app)
 load_dotenv()
 
 # Fetch API keys from environment variables
-groq_api_key = os.getenv("GROQ_API_KEY")
-tavily_api_key = os.getenv("TAVILY_API_KEY")
+groq_api_key = os.environ.get("GROQ_API_KEY")
+tavily_api_key = os.environ.get("TAVILY_API_KEY")
 
 # Ensure the API keys are provided
 if not groq_api_key or not tavily_api_key:
