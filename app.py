@@ -113,7 +113,7 @@ def create_crewai_setup(category, budget, num_people, trip_type, month):
             well-formatted manner. The pointers should be detailed.""",
             expected_output="Detailed and clear report of recommendation.",
             agent=Travel_Agent,
-            context= task1
+            context= [task1]
         )
 
         travel_crew = Crew(
