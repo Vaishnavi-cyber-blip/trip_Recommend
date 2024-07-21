@@ -12,7 +12,7 @@ from langchain_groq import ChatGroq
 
 # Initialize Flask app
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "https://tripbharat.netlify.app"}})
 load_dotenv()
 
 # Fetch API keys from environment variables
