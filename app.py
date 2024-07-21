@@ -14,7 +14,7 @@ from langchain_groq import ChatGroq
 crew_result_store = {}
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "https://tripbharat.netlify.app"}})
+CORS(app, resources={r"/agents": {"origins": "https://tripbharat.netlify.app"}})
 load_dotenv()
 
 
