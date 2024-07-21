@@ -156,3 +156,5 @@ def get_crew_result():
     key = (category, trip_type, month, budget, num_people)
     result = crew_result_store.get(key, "Result not available yet.")
     return jsonify({'crew_result': result})
+
+
