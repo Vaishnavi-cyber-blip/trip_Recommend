@@ -144,14 +144,14 @@ def get_logs():
         logs.append(output_queue.get())
     return jsonify({'logs': logs})
 
-@app.before_request
-def before_request_func():
-    if request.method == 'OPTIONS':
-        response = make_response()
-        response.headers.add("Access-Control-Allow-Origin", "https://tripbharat.netlify.app")
-        response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
-        response.headers.add("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS")
-        return response
+# @app.before_request
+# def before_request_func():
+#     if request.method == 'OPTIONS':
+#         response = make_response()
+#         response.headers.add("Access-Control-Allow-Origin", "https://tripbharat.netlify.app")
+#         response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
+#         response.headers.add("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS")
+#         return response
 
 
 @app.route('/crew_result', methods=['GET'])
