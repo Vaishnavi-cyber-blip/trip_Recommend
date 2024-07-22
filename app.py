@@ -14,9 +14,8 @@ from langchain_groq import ChatGroq
 crew_result_store = {}
 
 app = Flask(__name__)
-CORS(app, resources={r"/agents": {"origins": "https://tripbharat.netlify.app"}})
+CORS(app, resources={r"/*": {"origins": "https://tripbharat.netlify.app"}}, supports_credentials=True)
 load_dotenv()
-
 
 groq_api_key = os.environ.get("GROQ_API_KEY")
 tavily_api_key = os.environ.get("TAVILY_API_KEY")
@@ -144,6 +143,16 @@ def get_logs():
     while not output_queue.empty():
         logs.append(output_queue.get())
     return jsonify({'logs': logs})
+
+@app.before_request
+def before_request_func():
+    if request.method == 'OPTIONS':
+        response = make_response()
+        response.headers.add("Access-Control-Allow-Origin", "https://tripbharat.netlify.app")
+        response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
+        response.headers.add("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS")
+        return response
+
 
 @app.route('/crew_result', methods=['GET'])
 def get_crew_result():
